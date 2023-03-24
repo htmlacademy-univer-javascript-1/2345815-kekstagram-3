@@ -6,7 +6,7 @@ function print(value){
 //2.17
 //Функция, возвращающая случайное целое число из переданного диапазона включительно.
 function randomInt(from, to){
-  if (isNaN(from) || isNaN(to)) { throw new Error('Error'); };
+  if (isNaN(from) || isNaN(to)) { throw new Error('Error') };
   var from = Math.abs(from);
   var to = Math.abs(to);
   const random = Math.random();
@@ -17,7 +17,7 @@ return parseInt((from < to) ? from + (random*(to-from)) : to + (random*(from-to)
 //длины введённого комментария, но должна быть универсальна.
 //eslint-disable-next-line
 function lengthOfString(str,size){
-  return (str.length === size) ? true : false
+  return (str.length == size) ? true : false;
 }
 
 //4.15
