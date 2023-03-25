@@ -1,5 +1,5 @@
 
-class Information {
+export class Information {
   constructor(Id, url, description, likes, comments){
     this.Id = Id;
     this.url = url;
@@ -8,4 +8,3 @@ class Information {
     this.comments = comments;
   }
 }
-export default Information;
