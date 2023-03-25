@@ -20,7 +20,8 @@ function lengthOfString(str,size){
 //4.15
 function randomString(from, to){
  let str = '';
-  for (let index = 0; index < randomInt(from,to); index++) {
+ let random = randomInt(from,to)
+  for (let index = 0; index < random; index++) {
    str = str + String.fromCharCode(randomInt(65,90));
   }
   return str;
