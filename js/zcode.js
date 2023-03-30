@@ -8,6 +8,15 @@ function folderNames(path){
   return fs.readdirSync(path);
 }
 
+function filteredFolders(info){
+  info = folderNames(info);
+  let list = []
+  for (let i = 0; i < info.length; i++) {
+  if (info[i].replace('.','') == info[i]) list.push(info[i])
+  }
+  return list
+}
+
 function searchFolder(stringName, stringFolderName){
   let found = false;
   let currentFolder = folderNames(stringFolderName);
@@ -27,7 +36,7 @@ class folderClass{
   }
 }
 
-function finalSearch(){
+function finalSearch(stringName){
   var x = false;
   let listFinished = []; let list = []; let path = '.'; let insideOfFolderList = folderNames('.');
 
@@ -53,23 +62,20 @@ function finalSearch(){
     if (checkBeginning == checkEnd) {x = true}
 
   }
-  print(list)
+
+  for (let i = 0; i < list.length; i++) {
+    if (searchFolder(stringName, list[i]) == true) {return list[i] + "/" + stringName}
+  }
+
 }
-finalSearch()
+print(finalSearch('lol.js'))
 
 
 
 
 
 //---------Prototype---------//
-function filteredFolders(info){
-  info = folderNames(info);
-  let list = []
-  for (let i = 0; i < info.length; i++) {
-  if (info[i].replace('.','') == info[i]) list.push(info[i])
-  }
-  return list
-}
+
 
 function listToFolderString(name){
   let listOfFolders = [];
