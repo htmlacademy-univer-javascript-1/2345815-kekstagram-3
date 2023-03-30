@@ -7,6 +7,61 @@ function folderNames(path){
   let fs = require('fs');
   return fs.readdirSync(path);
 }
+
+function searchFolder(stringName, stringFolderName){
+  let found = false;
+  let currentFolder = folderNames(stringFolderName);
+
+  for (let i = 0; i < currentFolder.length; i++) {
+   let search = currentFolder[i];
+   if (search == stringName) return found = true;
+  }
+
+  return found;
+}
+
+class folderClass{
+  constructor(strPath, foldList ){
+    this.strPath = strPath;
+    this.foldList = foldList;
+  }
+}
+
+function finalSearch(){
+  var x = false;
+  let listFinished = []; let list = []; let path = '.'; let insideOfFolderList = folderNames('.');
+
+  while(x == false){
+    let checkBeginning = list.length
+
+    function creator(strPath){
+      insideOfFolderList = filteredFolders(strPath)
+      k = new folderClass(strPath, insideOfFolderList)
+      for (let i = 0; i < k.foldList.length; i++) {
+        list.push(`${k.strPath + '/' + k.foldList[i]}`)
+      }
+    }
+    size = list.length
+    for (let index = -1; index < size; index++) {
+      if (index == -1) index = 0
+      if (list.length != 0) path = list[index]
+      list = [... new Set(list)]
+      creator(path)
+    }
+    let checkEnd = list.length
+
+    if (checkBeginning == checkEnd) {x = true}
+
+  }
+  print(list)
+}
+finalSearch()
+
+
+
+
+
+//---------Prototype---------//
 function filteredFolders(info){
   info = folderNames(info);
   let list = []
@@ -49,18 +104,6 @@ function searchFolders(){
 }
 //print(folderNames('./2345815-kekstagram-3/img'))
 
-function searchFolder(name, folderName){
-  let found = false;
-  let currentFolder = folderNames(folderName);
-
-  for (let i = 0; i < currentFolder.length; i++) {
-   let search = currentFolder[i];
-   if (search == name) return found = true;
-  }
-
-  return found;
-}
-
 function searchForFiles(name){
   let allFolders = searchFolders()
 
@@ -74,5 +117,3 @@ function searchForFiles(name){
 
 }
 
-
-print(searchForFiles('zcode.js'))
