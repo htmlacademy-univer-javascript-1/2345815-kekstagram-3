@@ -4,4 +4,5 @@ function print(value){
   return console.log(value);
 }
 
-print(getRandomInformationList(25, 0, 100, 15, 200, 0, 200));
+// print(getRandomInformationList(25, 0, 100, 15, 200, 0, 200));
+

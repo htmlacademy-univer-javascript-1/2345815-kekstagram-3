@@ -12,6 +12,7 @@ function randomInt(from, to){
   const random = Math.random();
 return parseInt((from < to) ? from + (random*(to-from)) : to + (random*(from-to)));
 }
+console.log(geandomGenerator(0, 500));
 
 //Функция для проверки максимальной длины строки. Будет использоваться для проверки
 //длины введённого комментария, но должна быть универсальна.
