@@ -37,38 +37,41 @@ class folderClass{
 }
 
 function finalSearch(stringName){
-  var x = false;
-  let listFinished = []; let list = []; let path = '.'; let insideOfFolderList = folderNames('.');
+  var booleanEnd = false;
+  let listOfPaths = []; let path = '.'; let insideOfFolderList = folderNames('.');
 
-  while(x == false){
-    let checkBeginning = list.length
+  while(booleanEnd == false){
+    let checkBeginning = listOfPaths.length
 
     function creator(strPath){
       insideOfFolderList = filteredFolders(strPath)
-      k = new folderClass(strPath, insideOfFolderList)
-      for (let i = 0; i < k.foldList.length; i++) {
-        list.push(`${k.strPath + '/' + k.foldList[i]}`)
+      let pathInfo = new folderClass(strPath, insideOfFolderList)
+      for (let i = 0; i < pathInfo.foldList.length; i++) {
+        listOfPaths.push(`${pathInfo.strPath + '/' + pathInfo.foldList[i]}`)
       }
     }
-    size = list.length
+    size = listOfPaths.length
     for (let index = -1; index < size; index++) {
       if (index == -1) index = 0
-      if (list.length != 0) path = list[index]
-      list = [... new Set(list)]
+      if (listOfPaths.length != 0) path = listOfPaths[index]
+      listOfPaths = [... new Set(listOfPaths)]
       creator(path)
     }
-    let checkEnd = list.length
+    let checkEnd = listOfPaths.length
 
-    if (checkBeginning == checkEnd) {x = true}
+    if (checkBeginning == checkEnd) {booleanEnd = true}
 
   }
 
-  for (let i = 0; i < list.length; i++) {
-    if (searchFolder(stringName, list[i]) == true) {return list[i] + "/" + stringName}
+  for (let i = 0; i < listOfPaths.length; i++) {
+    if (searchFolder(stringName, listOfPaths[i]) == true) {return `${listOfPaths[i]}/${stringName}`}
   }
-
+return "File Not Found"
 }
-print(finalSearch('lol.js'))
+print(finalSearch('photos'))
+print(finalSearch('exp'))
+print(finalSearch('style.css'))
+print(finalSearch('andflngmd'))
 
 
 
