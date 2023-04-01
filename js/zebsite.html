@@ -8,8 +8,28 @@
   <body>
 
   <div id="banner">
-    <div id="image0">
+    <img style="width:100%;" id="image" src="../img/logo-background-1.jpg">
   </div>
+
+  <div id="pic">
+    <template id="clone">
+      <img style="width:100%;" class="lol" id="1" src="../photos/1.jpg"> </img>
+    </template>
+  </div>
+
+<script>
+  let findID = document.querySelector('#pic')
+  let findTemp = findID.querySelector('#clone')
+  let arrayImg = document.createDocumentFragment()
+  for (let index = 1; index < 26; index++) {
+    let photo = findTemp.content.cloneNode(true)
+    photo.querySelector('.lol').src = `../photos/${index}.jpg`
+    photo.querySelector('.lol').id = index
+    arrayImg.appendChild(photo)
+  }
+  findID.appendChild(arrayImg)
+</script>
+
 
 
 
