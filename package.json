@@ -25,6 +25,6 @@
     "node": "16.x",
     "npm": "8.x"
   },
-  "type": "commonjs"
+  "type": "module"
 
 }
