@@ -1,5 +1,5 @@
 import {Information} from "./xdata.js";
-function print2(value){
+function print(value){
   return console.log(value);
 }
 
@@ -12,7 +12,6 @@ function getRandomInt(from, to){
   const random = Math.random();
 return parseInt((from < to) ? from + (random*(to-from)) : to + (random*(from-to)));
 }
-console.log(getRandomInt(0, 500));
 
 //Функция для проверки максимальной длины строки. Будет использоваться для проверки
 //длины введённого комментария, но должна быть универсальна.
