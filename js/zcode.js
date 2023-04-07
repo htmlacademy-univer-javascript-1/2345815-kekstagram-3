@@ -3,6 +3,15 @@ function print(value){
 return console.log(value)
 }
 
+function multipleRemove(currentArray, deleteArray){
+  for (let i = 0; i < deleteArray.length; i++) {
+    currentArray = currentArray.filter(it => it != deleteArray[i])
+  }
+  return currentArray
+}
+
+print(multipleRemove(['a', 'b' , 'c'], ['a','b']))
+
 function folderNames(path){
   let fs = require('fs');
   return fs.readdirSync(path);
