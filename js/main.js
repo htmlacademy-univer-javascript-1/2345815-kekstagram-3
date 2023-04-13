@@ -1,8 +1,6 @@
-import {getRandomInformationList} from "./util.js";
-//eslint-disable-next-line
-function print(value){
-  return console.log(value);
-}
+import { getRandomInformationList } from './util.js';
+import { pastePhotos } from './pastePhotos.js';
 
-// print(getRandomInformationList(25, 0, 100, 15, 200, 0, 200));
+const informationArray = getRandomInformationList(25, 0, 100, 15, 200, 0, 200);
+pastePhotos(informationArray);
 
