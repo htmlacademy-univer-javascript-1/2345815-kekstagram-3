@@ -20,7 +20,7 @@ function checkLengthOfString(str, size) {
 //4.15
 function getRandomString(from, to) {
   let str = '';
-  let random = getRandomInt(from, to);
+  const random = getRandomInt(from, to);
   for (let index = 0; index < random; index++) {
     str = str + String.fromCharCode(getRandomInt(65, 90));
   }

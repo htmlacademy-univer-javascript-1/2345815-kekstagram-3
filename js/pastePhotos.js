@@ -11,6 +11,6 @@ export function pastePhotos(arrayOfInformation) {
     photo.querySelector('.picture__comments').textContent = it.comments;
     photo.querySelector('.picture__likes').textContent = it.likes;
     arrayImg.appendChild(photo);
-  })
+  });
   return findID.appendChild(arrayImg);
 }
