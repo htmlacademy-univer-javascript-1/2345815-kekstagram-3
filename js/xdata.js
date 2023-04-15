@@ -8,3 +8,4 @@ export class Information {
     this.comments = comments;
   }
 }
+
