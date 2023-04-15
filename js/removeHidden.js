@@ -4,8 +4,8 @@ const closeButton = document.querySelector('#upload-cancel');
 const resetData = document.querySelector('.img-upload__form');
 function close(e){
   if (closeButton.id === e.target.id || e.key === 'Escape' ) {
-    removeHidden.classList.add('hidden');resetData.reset();
-    document.body.classList.remove('model-open');
+  removeHidden.classList.add('hidden');resetData.reset();
+  document.body.classList.remove('model-open');
 }
 }
 function open(){
