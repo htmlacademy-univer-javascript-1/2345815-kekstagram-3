@@ -1,19 +1,19 @@
-let all = document.querySelectorAll('.effects__radio');
-let image = document.querySelector('.img-upload__preview')
+const all = document.querySelectorAll('.effects__radio');
+const image = document.querySelector('.img-upload__preview');
 
 function lol(evt){
-  let list = evt.explicitOriginalTarget.classList
-  let imgClass = image.classList
-  if (imgClass.length != 0) {
-    imgClass.remove(imgClass[1])
-    imgClass.add(list[1])
+  const list = evt.explicitOriginalTarget.classList;
+  const imgClass = image.classList;
+  if (imgClass.length !== 0) {
+    imgClass.remove(imgClass[1]);
+    imgClass.add(list[1]);
   } else {
-    imgClass.add(list[1])
+    imgClass.add(list[1]);
   }
 }
 
 for (let i = 0; i < all.length; i++) {
-  all[i].addEventListener('click', lol)
+  all[i].addEventListener('click', lol);
 }
 
 // function lol(evt){
