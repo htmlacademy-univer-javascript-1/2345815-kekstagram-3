@@ -1,8 +1,7 @@
-const all = document.querySelectorAll('.effects__radio');
-const image = document.querySelector('.img-upload__preview');
+export const all = document.querySelectorAll('.effects__radio');
+export const image = document.querySelector('.img-upload__preview');
 
-function lol(evt){
-  const list = evt.explicitOriginalTarget.classList;
+export function editClass(list){
   const imgClass = image.classList;
   if (imgClass.length !== 0) {
     imgClass.remove(imgClass[1]);
@@ -10,6 +9,11 @@ function lol(evt){
   } else {
     imgClass.add(list[1]);
   }
+}
+
+function lol(evt){
+  const list = evt.explicitOriginalTarget.classList;
+  editClass(list)
 }
 
 for (let i = 0; i < all.length; i++) {
