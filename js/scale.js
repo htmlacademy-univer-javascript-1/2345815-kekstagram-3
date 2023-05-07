@@ -17,8 +17,8 @@ function forBigger() {
 }
 export function goToOriginal(){
   imageSize.style.transform = 'scale(100%)';
-  editClass(all[0])
-  imageSize.children[0].src = 'img/upload-default-image.jpg'
+  editClass(all[0]);
+  imageSize.children[0].src = 'img/upload-default-image.jpg';
 }
 
 
