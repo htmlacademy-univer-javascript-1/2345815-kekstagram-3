@@ -17,7 +17,7 @@ export function close(e) {
     } else{
       errorMessage.remove()
       successMessage.remove()
-    }
+     }
   }
 }
 
