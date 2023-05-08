@@ -35,6 +35,7 @@ function open() {
   fileReader.readAsDataURL(loadedFile);
 }
 locateHidden.addEventListener('change', open);
+closeButton.addEventListener('click', close);
 successButton.addEventListener('click', close);
 errorButton.addEventListener('click', close);
 document.addEventListener('keyup', close);
