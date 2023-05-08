@@ -10,7 +10,7 @@ export function close(e) {
   const errorBoolean = document.contains(errorMessage);
   const successBoolean = document.contains(successMessage);
   const checkGeneral = closeButton.id === e.target.id || e.key === 'Escape';
-  if (checkGeneral || (e.target == successButton) || (e.target == errorButton)) {
+  if (checkGeneral || (e.target === successButton) || (e.target === errorButton)) {
     if (!errorBoolean && !successBoolean) {
       removeHidden.classList.add('hidden'); resetData.reset();
       document.body.classList.remove('model-open');
