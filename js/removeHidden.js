@@ -7,9 +7,10 @@ const closeButton = document.querySelector('#upload-cancel');
 const resetData = document.querySelector('.img-upload__form');
 
 export function close(e) {
-  const errorBoolean = document.contains(errorMessage)
-  const successBoolean = document.contains(successMessage)
-  if (closeButton.id === e.target.id || e.key === 'Escape') {
+  const errorBoolean = document.contains(errorMessage);
+  const successBoolean = document.contains(successMessage);
+  const checkGeneral = closeButton.id === e.target.id || e.key === 'Escape';
+  if (checkGeneral || (e.target == successButton) || (e.target == errorButton)) {
     if (!errorBoolean && !successBoolean) {
       removeHidden.classList.add('hidden'); resetData.reset();
       document.body.classList.remove('model-open');
@@ -30,11 +31,12 @@ function open() {
   const fileReader = new FileReader();
   fileReader.onloadend = function () {
     currentFile.src = fileReader.result;
-  }
+  };
   fileReader.readAsDataURL(loadedFile);
 }
 locateHidden.addEventListener('change', open);
-closeButton.addEventListener('click', close);
+successButton.addEventListener('click', close);
+errorButton.addEventListener('click', close);
 document.addEventListener('keyup', close);
 
 

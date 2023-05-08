@@ -84,6 +84,6 @@ const pristine = new Pristine(form);
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
-  if (isValid) {sendJason(evt);}
+  if (isValid) {sendJason(evt);} else {showError();}
 });
 // window.onclick = e => console.log(e.target)
