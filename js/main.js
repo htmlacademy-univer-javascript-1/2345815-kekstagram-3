@@ -6,4 +6,4 @@ import { } from './effects.js';
 
 const informationArray = getRandomInformationList(25, 0, 100, 15, 200, 0, 200);
 pastePhotos(informationArray);
-serverJson('https://27.javascript.pages.academy/kekstagram-simple/data')
+serverJson('https://27.javascript.pages.academy/kekstagram-simple/data');

@@ -13,7 +13,7 @@ export function editClass(list){
 
 function lol(evt){
   const list = evt.explicitOriginalTarget.classList;
-  editClass(list)
+  editClass(list);
 }
 
 for (let i = 0; i < all.length; i++) {

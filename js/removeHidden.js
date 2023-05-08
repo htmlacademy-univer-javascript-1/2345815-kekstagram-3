@@ -1,4 +1,4 @@
-import { errorMessage, errorButton, successMessage, successButton } from './pastePhotos.js';
+import { errorMessage, errorButton, successMessage, successButton, showError } from './pastePhotos.js';
 import { goToOriginal } from './scale.js';
 
 const removeHidden = document.querySelector('.img-upload__overlay');
@@ -7,35 +7,50 @@ const closeButton = document.querySelector('#upload-cancel');
 const resetData = document.querySelector('.img-upload__form');
 
 export function close(e) {
-  let errorBoolean = document.contains(errorMessage)
-  let successBoolean = document.contains(successMessage)
-  if (closeButton.id === e.target.id || e.key === 'Escape') {
-    if (!errorBoolean && !successBoolean){
-    removeHidden.classList.add('hidden'); resetData.reset();
-    document.body.classList.remove('model-open');
-    goToOriginal()
-    } else{
-      errorMessage.remove()
-      successMessage.remove()
+  const errorBoolean = document.contains(errorMessage);
+  const successBoolean = document.contains(successMessage);
+  const checkGeneral = closeButton.id === e.target.id || e.key === 'Escape';
+  const buttonBooleans = (e.target === successButton) || (e.target === errorButton);
+  const outsideButtonBoxBooleans = (e.target === successMessage) || (e.target === errorMessage);
+
+  if (checkGeneral || buttonBooleans || outsideButtonBoxBooleans) {
+    if (!errorBoolean && !successBoolean) {
+      removeHidden.classList.add('hidden'); resetData.reset();
+      document.body.classList.remove('model-open');
+      goToOriginal();
+      closeButton.removeEventListener('click', close);
+      document.removeEventListener('keyup', close);
+      successMessage.removeEventListener('click', close);
+      errorMessage.removeEventListener('click', close);
+    } else {
+      errorMessage.remove();
+      successMessage.remove();
     }
   }
 }
 
 function open() {
-  removeHidden.classList.remove('hidden');
-  document.body.classList.add('model-open');
-  let loadedFile = document.querySelector('#upload-file').files[0]
-  let currentFile = document.querySelector('.img-upload__preview').children[0]
+  const loadedFile = document.querySelector('#upload-file').files[0];
+  if (loadedFile.type.split('/')[0] === 'image') {
+    document.body.classList.add('model-open');
+    const currentFile = document.querySelector('.img-upload__preview').children[0];
+    removeHidden.classList.remove('hidden');
+    const fileReader = new FileReader();
+    fileReader.onloadend = function () {
+      currentFile.src = fileReader.result;
+    };
+    fileReader.readAsDataURL(loadedFile);
 
-  let fileReader = new FileReader()
-  fileReader.onloadend = function(){
-    currentFile.src = fileReader.result
+    closeButton.addEventListener('click', close);
+    successMessage.addEventListener('click', close);
+    errorMessage.addEventListener('click', close);
+    document.addEventListener('keyup', close);
+  } else {
+    showError();
+    errorMessage.addEventListener('click', close);
   }
-  fileReader.readAsDataURL(loadedFile)
 }
 locateHidden.addEventListener('change', open);
-closeButton.addEventListener('click', close);
-document.addEventListener('keyup', close);
 
 
 //window.onclick = e => {if (c.id == e.target.id) {f.classList.add('hidden'); console.log(e)} }
