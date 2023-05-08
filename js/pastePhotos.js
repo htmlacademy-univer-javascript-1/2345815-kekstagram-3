@@ -85,15 +85,15 @@ const addValidateParamater = (value) => {
   const min = 20;
   const max = 140;
   return value.length >= min && value.length <= max - 1;
-  };
+};
 
-  pristine.addValidator(
+pristine.addValidator(
   form.querySelector('.text__description'),
   addValidateParamater
-  );
+);
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
-  if (isValid) {sendJason(evt);} else {showError();}
+  if (isValid) { sendJason(evt); } else { showError(); }
 });
 // window.onclick = e => console.log(pristine)
