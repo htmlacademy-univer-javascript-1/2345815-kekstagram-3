@@ -22,15 +22,12 @@ export function close(e) {
       document.removeEventListener('keyup', close);
       successMessage.removeEventListener('click', close);
       errorMessage.removeEventListener('click', close);
-      console.log('lol')
     } else {
       errorMessage.remove();
       successMessage.remove();
     }
   }
 }
-
-window.onclick = e => console.log(e.target === errorMessage)
 
 function open() {
   const loadedFile = document.querySelector('#upload-file').files[0];
