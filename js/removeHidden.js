@@ -42,15 +42,16 @@ function open() {
       currentFile.src = fileReader.result;
     };
     fileReader.readAsDataURL(loadedFile);
+
+    closeButton.addEventListener('click', close);
+    successButton.addEventListener('click', close);
+    successMessage.addEventListener('click', close);
+    errorButton.addEventListener('click', close);
+    errorMessage.addEventListener('click', close);
+    document.addEventListener('keyup', close);
   } else {
     showError();
   }
-  closeButton.addEventListener('click', close);
-  successButton.addEventListener('click', close);
-  successMessage.addEventListener('click', close);
-  errorButton.addEventListener('click', close);
-  errorMessage.addEventListener('click', close);
-  document.addEventListener('keyup', close);
 }
 locateHidden.addEventListener('change', open);
 
