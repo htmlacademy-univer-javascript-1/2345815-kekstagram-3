@@ -10,11 +10,20 @@ export function close(e) {
   const errorBoolean = document.contains(errorMessage);
   const successBoolean = document.contains(successMessage);
   const checkGeneral = closeButton.id === e.target.id || e.key === 'Escape';
-  if (checkGeneral || (e.target === successButton) || (e.target === errorButton)) {
+  const buttonBooleans = (e.target === successButton) || (e.target === errorButton);
+  const outsideButtonBoxBooleans = (e.target === successMessage) || (e.target === errorMessage);
+
+  if (checkGeneral || buttonBooleans || outsideButtonBoxBooleans) {
     if (!errorBoolean && !successBoolean) {
       removeHidden.classList.add('hidden'); resetData.reset();
       document.body.classList.remove('model-open');
       goToOriginal();
+      closeButton.removeEventListener('click', close);
+      document.removeEventListener('keyup', close);
+      successButton.removeEventListener('click', close);
+      successMessage.removeEventListener('click', close);
+      errorButton.removeEventListener('click', close);
+      errorMessage.removeEventListener('click', close);
     } else {
       errorMessage.remove();
       successMessage.remove();
@@ -36,12 +45,14 @@ function open() {
   } else {
     showError();
   }
+  closeButton.addEventListener('click', close);
+  successButton.addEventListener('click', close);
+  successMessage.addEventListener('click', close);
+  errorButton.addEventListener('click', close);
+  errorMessage.addEventListener('click', close);
+  document.addEventListener('keyup', close);
 }
 locateHidden.addEventListener('change', open);
-closeButton.addEventListener('click', close);
-successButton.addEventListener('click', close);
-errorButton.addEventListener('click', close);
-document.addEventListener('keyup', close);
 
 
 //window.onclick = e => {if (c.id == e.target.id) {f.classList.add('hidden'); console.log(e)} }
