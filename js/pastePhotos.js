@@ -81,6 +81,16 @@ function sendJason(evt) {
 }
 
 const pristine = new Pristine(form);
+const addValidateParamater = (value) => {
+  const min = 20;
+  const max = 140;
+  return value.length >= min && value.length <= max - 1;
+  };
+
+  pristine.addValidator(
+  form.querySelector('.text__description'),
+  addValidateParamater
+  );
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();

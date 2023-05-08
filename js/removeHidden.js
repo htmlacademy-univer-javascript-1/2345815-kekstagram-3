@@ -20,16 +20,17 @@ export function close(e) {
       goToOriginal();
       closeButton.removeEventListener('click', close);
       document.removeEventListener('keyup', close);
-      successButton.removeEventListener('click', close);
       successMessage.removeEventListener('click', close);
-      errorButton.removeEventListener('click', close);
       errorMessage.removeEventListener('click', close);
+      console.log('lol')
     } else {
       errorMessage.remove();
       successMessage.remove();
     }
   }
 }
+
+window.onclick = e => console.log(e.target === errorMessage)
 
 function open() {
   const loadedFile = document.querySelector('#upload-file').files[0];
@@ -44,9 +45,7 @@ function open() {
     fileReader.readAsDataURL(loadedFile);
 
     closeButton.addEventListener('click', close);
-    successButton.addEventListener('click', close);
     successMessage.addEventListener('click', close);
-    errorButton.addEventListener('click', close);
     errorMessage.addEventListener('click', close);
     document.addEventListener('keyup', close);
   } else {
