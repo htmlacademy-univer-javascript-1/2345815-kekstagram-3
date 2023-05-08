@@ -47,6 +47,7 @@ function open() {
     document.addEventListener('keyup', close);
   } else {
     showError();
+    errorMessage.addEventListener('click', close);
   }
 }
 locateHidden.addEventListener('change', open);
