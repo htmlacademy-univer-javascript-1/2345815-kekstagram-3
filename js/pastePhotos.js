@@ -57,7 +57,7 @@ function showSuccess() {
 const errorMessageTemplate = body.querySelector('#error').content.querySelector('.error');
 export const errorMessage = errorMessageTemplate.cloneNode(true);
 export const errorButton = errorMessage.querySelector('.error__button');
-function showError() {
+export function showError() {
   body.appendChild(errorMessage);
   moveToFront(errorMessage);
 }
@@ -86,4 +86,4 @@ form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
   if (isValid) {sendJason(evt);} else {showError();}
 });
-// window.onclick = e => console.log(e.target)
+// window.onclick = e => console.log(pristine)

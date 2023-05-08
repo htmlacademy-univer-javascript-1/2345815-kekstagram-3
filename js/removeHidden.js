@@ -1,4 +1,4 @@
-import { errorMessage, errorButton, successMessage, successButton } from './pastePhotos.js';
+import { errorMessage, errorButton, successMessage, successButton, showError } from './pastePhotos.js';
 import { goToOriginal } from './scale.js';
 
 const removeHidden = document.querySelector('.img-upload__overlay');
@@ -23,16 +23,19 @@ export function close(e) {
 }
 
 function open() {
-  removeHidden.classList.remove('hidden');
-  document.body.classList.add('model-open');
   const loadedFile = document.querySelector('#upload-file').files[0];
+  if (loadedFile.type.split('/')[0] === "image") {
+  document.body.classList.add('model-open');
   const currentFile = document.querySelector('.img-upload__preview').children[0];
-
+  removeHidden.classList.remove('hidden');
   const fileReader = new FileReader();
   fileReader.onloadend = function () {
     currentFile.src = fileReader.result;
   };
   fileReader.readAsDataURL(loadedFile);
+} else {
+  showError()
+}
 }
 locateHidden.addEventListener('change', open);
 closeButton.addEventListener('click', close);
