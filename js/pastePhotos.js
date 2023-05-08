@@ -17,16 +17,16 @@ export function pastePhotos(arrayOfInformation) {
 }
 
 export async function serverJson(link) {
-  let info = document.querySelectorAll('.picture__info');
-  let pictures = document.querySelectorAll('.picture__img');
-  let obtainedJason = await fetch(link).then((response) => {
+  const info = document.querySelectorAll('.picture__info');
+  const pictures = document.querySelectorAll('.picture__img');
+  const obtainedJason = await fetch(link).then((response) => {
     if (response.ok) {
       return response.json();
     } else {
       return Error('response not ok');
     }
   }
-  )
+  );
   for (let i = 0; i < info.length; i++) {
     pictures[i].src = obtainedJason[i].url;
     info[i].querySelector('.picture__likes').textContent = obtainedJason[i].likes;
@@ -63,13 +63,13 @@ function showError() {
 }
 
 function sendJason(evt) {
-  let link = 'https://27.javascript.pages.academy/kekstagram-simple';
-  let formData = new FormData(evt.target);
+  const link = 'https://27.javascript.pages.academy/kekstagram-simple';
+  const formData = new FormData(evt.target);
   fetch(link, {
     method: 'POST',
     body: formData
   }
-  ).then(response => {
+  ).then((response) => {
     if (response.ok) {
       showSuccess();
       goToOriginal();
@@ -77,17 +77,13 @@ function sendJason(evt) {
       showError();
     }
   })
-    .catch(error => Error(error));
+    .catch((error) => Error(error));
 }
 
 const pristine = new Pristine(form);
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const isValid = pristine.validate();
-  if (isValid) sendJason(evt);
-})
-
-
-
+  if (isValid) {sendJason(evt);}
+});
 // window.onclick = e => console.log(e.target)
-
