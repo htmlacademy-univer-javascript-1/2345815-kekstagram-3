@@ -20,7 +20,5 @@ export function goToOriginal(){
   editClass(all[0]);
   imageSize.children[0].src = 'img/upload-default-image.jpg';
 }
-window.onclick = e => console.log(imageSize.children[0].src.type)
-
 smaller.addEventListener('click', forSmaller);
 bigger.addEventListener('click', forBigger);
